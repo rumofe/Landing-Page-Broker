@@ -46,7 +46,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className={inter.variable}>
-      <body className="min-h-screen bg-white">{children}</body>
+      <body className="min-h-screen bg-[#0c0c0d] text-[#f0f0f0]">{children}</body>
     </html>
   );
 }

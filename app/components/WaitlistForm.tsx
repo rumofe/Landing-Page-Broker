@@ -21,21 +21,18 @@ export default function WaitlistForm({ variant = "cta" }: WaitlistFormProps) {
 
   if (submitted) {
     return (
-      <div className="flex items-center gap-3">
-        <div className="w-5 h-5 rounded-full bg-[#0d9488] flex items-center justify-center text-white text-xs">
-          ✓
-        </div>
-        <p className="text-sm text-[#4a5568]">
-          Apuntado. <span className="text-[#0f1923] font-medium">Te avisaremos cuando abramos acceso.</span>
-        </p>
-      </div>
+      <p className="text-sm" style={{ color: "#555" }}>
+        Apuntado.{" "}
+        <span style={{ color: "#f0f0f0" }}>Te avisaremos cuando abramos acceso.</span>
+      </p>
     );
   }
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-sm">
       <div
-        className="form-row flex items-center border border-gray-200 bg-white transition-all"
+        className="form-row flex items-center border transition-colors"
+        style={{ borderColor: "rgba(255,255,255,0.1)" }}
       >
         <input
           type="email"
@@ -43,17 +40,23 @@ export default function WaitlistForm({ variant = "cta" }: WaitlistFormProps) {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="correo@ejemplo.com"
           required
-          className="flex-1 px-4 py-3 text-sm outline-none bg-transparent text-[#0f1923] placeholder-gray-400 min-w-0"
+          className="flex-1 bg-transparent px-4 py-3 text-sm outline-none min-w-0"
+          style={{ color: "#f0f0f0" }}
         />
         <button
           type="submit"
-          className="shrink-0 px-5 py-3 text-xs font-medium tracking-widest uppercase bg-[#0d9488] text-white hover:bg-[#0f766e] transition-colors cursor-pointer"
+          className="shrink-0 px-5 py-3 text-xs tracking-widest uppercase transition-opacity hover:opacity-70 cursor-pointer"
+          style={{
+            background: "#f0f0f0",
+            color: "#0c0c0d",
+            fontWeight: 500,
+          }}
         >
           Reservar
         </button>
       </div>
       {variant === "hero" && (
-        <p className="text-xs text-gray-400 mt-3">
+        <p className="text-xs mt-3 text-center" style={{ color: "#333" }}>
           Sin spam. Cancelación inmediata.
         </p>
       )}
