@@ -6,7 +6,7 @@ import Comparison from "./components/Comparison";
 import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import Security from "./components/Security";
-import FloatingLines from "./components/FloatingLines";
+import HeroBackground from "./components/HeroBackground";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -77,17 +77,7 @@ export default function Home() {
           style={{ background: "linear-gradient(135deg, #0c4a6e 0%, #0369a1 60%, #0284c7 100%)" }}
         >
           <div className="absolute inset-0 z-0">
-            <FloatingLines
-              enabledWaves={["middle", "bottom"]}
-              lineCount={3}
-              lineDistance={5}
-              bendRadius={4}
-              bendStrength={-0.5}
-              interactive
-              parallax={false}
-              linesGradient={["#38bdf8", "#7dd3fc", "#bae6fd"]}
-              mixBlendMode="screen"
-            />
+            <HeroBackground />
           </div>
 
           <div className="relative z-10 px-6 pt-28 pb-20 max-w-3xl mx-auto">
