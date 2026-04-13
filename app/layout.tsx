@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  icons: { icon: "/logo.png", apple: "/logo.png" },
   title: "Wrap — El broker más transparente",
   description:
     "Invierte sin letra pequeña. Ve exactamente cuánto ganas, cuánto arriesgas y cuándo — antes de ejecutar. Únete a la lista de acceso anticipado.",
