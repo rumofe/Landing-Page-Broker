@@ -8,13 +8,28 @@ interface WaitlistFormProps {
 
 export default function WaitlistForm({ variant = "cta" }: WaitlistFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!email) return;
-    setSubmitted(true);
-    // TODO: replace with real API call
+    if (!email || loading) return;
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+    } catch {
+      setError("Algo ha fallado. Inténtalo de nuevo.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   const isHero = variant === "hero";
@@ -57,14 +72,16 @@ export default function WaitlistForm({ variant = "cta" }: WaitlistFormProps) {
         />
         <button
           type="submit"
-          className="shrink-0 mr-1.5 px-6 py-2.5 rounded-full text-xs font-semibold tracking-wide uppercase transition-all cursor-pointer hover:opacity-85 active:scale-95"
+          disabled={loading}
+          className="shrink-0 mr-1.5 px-6 py-2.5 rounded-full text-xs font-semibold tracking-wide uppercase transition-all cursor-pointer hover:opacity-85 active:scale-95 disabled:opacity-60"
           style={{ background: "#0ea5e9", color: "#ffffff" }}
         >
-          Reservar plaza
+          {loading ? "..." : "Reservar plaza"}
         </button>
       </div>
-      {isHero && (
-        <p className="text-xs mt-4 text-center text-slate-400">
+      {error && <p className="text-xs mt-2 text-center text-red-400">{error}</p>}
+      {isHero && !error && (
+        <p className="text-xs mt-4 text-center text-white/30">
           Sin spam. Sin tarjeta. Cancelación inmediata.
         </p>
       )}

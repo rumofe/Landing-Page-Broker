@@ -30,6 +30,22 @@
 }
 .marquee-track:hover { animation-play-state: paused; }
 
+/* CSS blobs (product preview) */
+@keyframes blob1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, 30px) scale(1.08); }
+  66%       { transform: translate(-30px, 20px) scale(0.94); }
+}
+@keyframes blob2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-50px, -20px) scale(1.06); }
+  66%       { transform: translate(30px, -35px) scale(0.96); }
+}
+@keyframes blob3 {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50%       { transform: translate(-50%, -50%) scale(1.15); }
+}
+
 /* Form focus */
 .form-row:focus-within {
   border-color: rgba(14, 165, 233, 0.6) !important;

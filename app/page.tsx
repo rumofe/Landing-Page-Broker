@@ -1,7 +1,6 @@
 import WaitlistForm from "./components/WaitlistForm";
 import SpotlightCard from "./components/SpotlightCard";
 import GradientText from "./components/GradientText";
-import IridescenceBackground from "./components/backgrounds/IridescenceBackground";
 import Marquee from "./components/Marquee";
 import Comparison from "./components/Comparison";
 import Testimonials from "./components/Testimonials";
@@ -79,13 +78,13 @@ export default function Home() {
         >
           <div className="absolute inset-0 z-0">
             <FloatingLines
-              enabledWaves={["top", "middle", "bottom"]}
-              lineCount={5}
+              enabledWaves={["middle", "bottom"]}
+              lineCount={3}
               lineDistance={5}
-              bendRadius={5}
+              bendRadius={4}
               bendStrength={-0.5}
               interactive
-              parallax
+              parallax={false}
               linesGradient={["#38bdf8", "#7dd3fc", "#bae6fd"]}
               mixBlendMode="screen"
             />
@@ -184,15 +183,32 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── PRODUCT PREVIEW  (Iridescence bg · white) ────────── */}
+        {/* ── PRODUCT PREVIEW  (CSS blobs · white) ─────────────── */}
         <section className="relative py-20 px-6 bg-white border-b border-sky-100 overflow-hidden">
-          <IridescenceBackground
-            color={[0.5, 0.6, 0.8]}
-            mouseReact
-            amplitude={0.9}
-            speed={0.8}
-            className="z-0 opacity-60"
-          />
+          {/* CSS animated blobs */}
+          <div aria-hidden className="absolute inset-0 z-0 pointer-events-none">
+            <div style={{
+              position: "absolute", width: "600px", height: "600px",
+              borderRadius: "50%", filter: "blur(80px)", opacity: 0.18,
+              background: "radial-gradient(circle, #38bdf8, #0ea5e9)",
+              top: "-100px", left: "-150px",
+              animation: "blob1 12s ease-in-out infinite",
+            }} />
+            <div style={{
+              position: "absolute", width: "500px", height: "500px",
+              borderRadius: "50%", filter: "blur(80px)", opacity: 0.14,
+              background: "radial-gradient(circle, #bae6fd, #7dd3fc)",
+              bottom: "-80px", right: "-100px",
+              animation: "blob2 15s ease-in-out infinite",
+            }} />
+            <div style={{
+              position: "absolute", width: "350px", height: "350px",
+              borderRadius: "50%", filter: "blur(60px)", opacity: 0.12,
+              background: "radial-gradient(circle, #e0f2fe, #38bdf8)",
+              top: "40%", left: "40%",
+              animation: "blob3 10s ease-in-out infinite",
+            }} />
+          </div>
           <div className="relative z-10 max-w-5xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* Text */}
