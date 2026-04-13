@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <>
       {/* ── NAV ───────────────────────────────────────────────── */}
-      <nav className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-8 md:px-12 py-4 backdrop-blur-xl bg-white/90 border-b border-sky-100">
+      <nav className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-8 md:px-12 py-4">
         <div className="flex items-center gap-2.5">
           <img src="/logo.png" alt="Wrap" className="h-7 w-auto object-contain" />
           <span className="text-sm font-semibold tracking-[0.2em] uppercase text-[#0c4a6e]">
