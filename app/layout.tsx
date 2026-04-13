@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "El broker más transparente — Lista de espera",
+  title: "Wrap — El broker más transparente",
   description:
     "Invierte sin letra pequeña. Ve exactamente cuánto ganas, cuánto arriesgas y cuándo — antes de ejecutar. Únete a la lista de acceso anticipado.",
   keywords: [
@@ -21,16 +21,16 @@ export const metadata: Metadata = {
     "broker acceso anticipado",
   ],
   openGraph: {
-    title: "El broker más transparente — Lista de espera",
+    title: "Wrap — El broker más transparente",
     description:
       "Invierte sin letra pequeña. Protege tus posiciones con claridad total — sin comisiones ocultas, sin jerga innecesaria.",
     type: "website",
     locale: "es_ES",
-    siteName: "ApexTrade",
+    siteName: "Wrap",
   },
   twitter: {
     card: "summary_large_image",
-    title: "El broker más transparente — Lista de espera",
+    title: "Wrap — El broker más transparente",
     description:
       "Invierte sin letra pequeña. Protege tus posiciones con claridad total.",
   },
@@ -46,7 +46,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className={inter.variable}>
-      <body className="min-h-screen bg-[#0c0c0d] text-[#f0f0f0]">{children}</body>
+      <body className="min-h-screen bg-white text-slate-900">
+        {children}
+      </body>
     </html>
   );
 }

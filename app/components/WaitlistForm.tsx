@@ -14,50 +14,58 @@ export default function WaitlistForm({ variant = "cta" }: WaitlistFormProps) {
     e.preventDefault();
     if (!email) return;
     setSubmitted(true);
-
     // TODO: replace with real API call
-    // fetch('/api/waitlist', { method: 'POST', body: JSON.stringify({ email }), headers: { 'Content-Type': 'application/json' } })
   }
+
+  const isHero = variant === "hero";
 
   if (submitted) {
     return (
-      <p className="text-sm" style={{ color: "#555" }}>
-        Apuntado.{" "}
-        <span style={{ color: "#f0f0f0" }}>Te avisaremos cuando abramos acceso.</span>
-      </p>
+      <div className="flex items-center gap-3">
+        <div
+          className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
+          style={{ background: "#0ea5e9" }}
+        >
+          ✓
+        </div>
+        <p className={`text-sm ${isHero ? "text-slate-500" : "text-white/70"}`}>
+          Estás dentro.{" "}
+          <span className={`font-medium ${isHero ? "text-[#0c4a6e]" : "text-white"}`}>
+            Te avisaremos cuando abramos acceso.
+          </span>
+        </p>
+      </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-sm">
+    <form onSubmit={handleSubmit} className="w-full max-w-md">
       <div
-        className="form-row flex items-center border transition-colors"
-        style={{ borderColor: "rgba(255,255,255,0.1)" }}
+        className="form-row flex items-center rounded-full border transition-all"
+        style={isHero
+          ? { borderColor: "rgba(14,165,233,0.25)", background: "rgba(14,165,233,0.04)" }
+          : { borderColor: "rgba(255,255,255,0.15)", background: "rgba(255,255,255,0.06)" }
+        }
       >
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="correo@ejemplo.com"
+          placeholder="tu@email.com"
           required
-          className="flex-1 bg-transparent px-4 py-3 text-sm outline-none min-w-0"
-          style={{ color: "#f0f0f0" }}
+          className={`flex-1 bg-transparent pl-6 pr-2 py-3.5 text-sm outline-none min-w-0 ${isHero ? "text-slate-700 placeholder:text-slate-300" : "text-white placeholder:text-white/30"}`}
         />
         <button
           type="submit"
-          className="shrink-0 px-5 py-3 text-xs tracking-widest uppercase transition-opacity hover:opacity-70 cursor-pointer"
-          style={{
-            background: "#f0f0f0",
-            color: "#0c0c0d",
-            fontWeight: 500,
-          }}
+          className="shrink-0 mr-1.5 px-6 py-2.5 rounded-full text-xs font-semibold tracking-wide uppercase transition-all cursor-pointer hover:opacity-85 active:scale-95"
+          style={{ background: "#0ea5e9", color: "#ffffff" }}
         >
-          Reservar
+          Reservar plaza
         </button>
       </div>
-      {variant === "hero" && (
-        <p className="text-xs mt-3 text-center" style={{ color: "#333" }}>
-          Sin spam. Cancelación inmediata.
+      {isHero && (
+        <p className="text-xs mt-4 text-center text-slate-400">
+          Sin spam. Sin tarjeta. Cancelación inmediata.
         </p>
       )}
     </form>
